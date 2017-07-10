@@ -57,6 +57,10 @@ RUN wget -nv https://pypi.python.org/packages/1e/8e/40c71faa24e19dab555eeb25d6c0
 RUN mkdir /sdk/tools/keymaps && \
     touch /sdk/tools/keymaps/en-us
 
+RUN echo "y" | /sdk/tools/android --silent update sdk --no-ui --all --filter extra-google-google_play_services
+RUN echo "y" | /sdk/tools/android --silent update sdk --no-ui --all --filter extra-google-m2repository
+RUN echo "y" | /sdk/tools/android --silent update sdk --no-ui --all --filter extra-android-m2repository
+
 RUN mkdir /helpers
 
 COPY wait-for-avd-boot.sh /helpers
