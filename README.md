@@ -7,11 +7,11 @@ GitLab CI image for building and testing Android apps
 
 This code on repo will automatically build on Docker Hub : 
 
-https://hub.docker.com/r/jerbob92/gitlab-ci-android/
+https://hub.docker.com/r/saeedmasoumi/gitlab-ci-android/
 
 ## Example `.gitlab-ci.yml` file
 ```yml
-image: jerbob92/gitlab-ci-android:latest
+image: saeedmasoumi/gitlab-ci-android:latest
 
 before_script:
     - export GRADLE_USER_HOME=`pwd`/.gradle
@@ -38,7 +38,7 @@ test:
 ## Example `.gitlab-ci.yml` with visual tests in emulator and recording of the screen.
 
 ```
-image: jerbob92/gitlab-ci-android:latest
+image: saeedmasoumi/gitlab-ci-android:latest
 
 stages:
   - build
