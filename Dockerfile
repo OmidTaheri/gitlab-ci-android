@@ -82,9 +82,9 @@ RUN echo y | /sdk/tools/android update sdk --no-ui --all --filter sys-img-x86-an
 RUN echo y | /sdk/tools/android update sdk --no-ui --all --filter sys-img-armeabi-v7a-android-24 | grep 'package installed'
 
 # Extras
-RUN echo y | /sdk/tools/android update sdk --no-ui --all --filter extra-android-m2repository | grep 'package installed'
-RUN echo y | /sdk/tools/android update sdk --no-ui --all --filter extra-google-m2repository | grep 'package installed'
-RUN echo y | /sdk/tools/android update sdk --no-ui --all --filter extra-google-google_play_services | grep 'package installed'
+# RUN echo y | /sdk/tools/android update sdk --no-ui --all --filter extra-android-m2repository | grep 'package installed'
+# RUN echo y | /sdk/tools/android update sdk --no-ui --all --filter extra-google-m2repository | grep 'package installed'
+# RUN echo y | /sdk/tools/android update sdk --no-ui --all --filter extra-google-google_play_services | grep 'package installed'
 
 
 RUN mkdir /helpers
