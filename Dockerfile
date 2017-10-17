@@ -8,7 +8,7 @@ FROM ubuntu:16.04
 MAINTAINER Saeed Masoumi <s-masoumi@live.com>
 
 ENV VERSION_SDK_TOOLS "25.2.5"
-ENV VERSION_BUILD_TOOLS "26.1.1"
+ENV VERSION_BUILD_TOOLS "26.0.2"
 ENV VERSION_TARGET_SDK "26"
 
 ENV SDK_PACKAGES "build-tools-${VERSION_BUILD_TOOLS},android-${VERSION_TARGET_SDK},addon-google_apis-google-${VERSION_TARGET_SDK},platform-tools,extra-android-m2repository,extra-android-support,extra-google-google_play_services,extra-google-m2repository,sys-img-x86-android-${VERSION_TARGET_SDK},sys-img-x86-google_apis-${VERSION_TARGET_SDK},extra-google-google_play_services,extra-google-m2repository,extra-android-m2repository"
@@ -60,6 +60,32 @@ RUN mkdir /sdk/tools/keymaps && \
 RUN echo "y" | /sdk/tools/android --silent update sdk --no-ui --all --filter extra-google-google_play_services
 RUN echo "y" | /sdk/tools/android --silent update sdk --no-ui --all --filter extra-google-m2repository
 RUN echo "y" | /sdk/tools/android --silent update sdk --no-ui --all --filter extra-android-m2repository
+
+# SDKs
+# Please keep these in descending order!
+RUN echo y | /sdk/tools/android update sdk --no-ui --all --filter android-26 | grep 'package installed'
+RUN echo y | /sdk/tools/android update sdk --no-ui --all --filter android-25 | grep 'package installed'
+RUN echo y | /sdk/tools/android update sdk --no-ui --all --filter android-24 | grep 'package installed'
+
+
+# build tools
+# Please keep these in descending order!
+RUN echo y | /sdk/tools/android update sdk --no-ui --all --filter build-tools-26.0.2 | grep 'package installed'
+RUN echo y | /sdk/tools/android update sdk --no-ui --all --filter build-tools-26.0.1 | grep 'package installed'
+RUN echo y | /sdk/tools/android update sdk --no-ui --all --filter build-tools-26.0.0 | grep 'package installed'
+RUN echo y | /sdk/tools/android update sdk --no-ui --all --filter build-tools-25.0.3 | grep 'package installed'
+
+
+# Android System Images, for emulators
+RUN echo y | /sdk/tools/android update sdk --no-ui --all --filter sys-img-x86_64-android-24 | grep 'package installed'
+RUN echo y | /sdk/tools/android update sdk --no-ui --all --filter sys-img-x86-android-24 | grep 'package installed'
+RUN echo y | /sdk/tools/android update sdk --no-ui --all --filter sys-img-armeabi-v7a-android-24 | grep 'package installed'
+
+# Extras
+RUN echo y | /sdk/tools/android update sdk --no-ui --all --filter extra-android-m2repository | grep 'package installed'
+RUN echo y | /sdk/tools/android update sdk --no-ui --all --filter extra-google-m2repository | grep 'package installed'
+RUN echo y | /sdk/tools/android update sdk --no-ui --all --filter extra-google-google_play_services | grep 'package installed'
+
 
 RUN mkdir /helpers
 
