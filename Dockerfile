@@ -26,6 +26,8 @@ RUN apt-get -qq update && \
       lib32ncurses5 \
       lib32z1 \
       unzip \
+      ruby2.4 \
+      ruby2.4-dev \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN rm -f /etc/ssl/certs/java/cacerts; \
@@ -48,6 +50,8 @@ RUN while read -r package; do PACKAGES="${PACKAGES}${package} "; done < /sdk/pac
     ${ANDROID_HOME}/tools/bin/sdkmanager ${PACKAGES}
     
 RUN mkdir /helpers
+
+RUN gem install fastlane
 
 COPY wait-for-avd-boot.sh /helpers
 
